@@ -11,6 +11,7 @@ import com.poussin.consommationapi.rest.vo.ConsommationVo;
 import com.poussin.consommationapi.service.ConsommationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,16 +35,27 @@ public class ConsommationRest {
     @Qualifier("consommationConverter")
     private AbstractConverter<Consommation, ConsommationVo> consommationConverter;
 
-   /* @PostMapping("/")
+    /* @PostMapping("/")
     public int creer(@RequestBody ConsommationVo consommationVo) {
         Consommation consommation = new ConsommationConverter().toItem(consommationVo);
         return consommationService.creer(consommation);
     }
-*/
-      @PostMapping("/")
+     */
+    @PostMapping("/")
     public int creer(@RequestBody Consommation consommation) {
         return consommationService.creer(consommation);
     }
+
+    @GetMapping("")
+    public int calculSommmeFourniture(@Param("semaine") int semaine, @Param("reFirme") String refFirme, @Param("annee") int annee) {
+      return consommationService.calculSommmeFourniture(semaine, refFirme, annee);
+    }
+
+    public int calculSommmeMedicamment(@Param("semaines") int semaines, @Param("reFirmes") String refFirmes, @Param("annees") int annees){
+    return consommationService.calculSommmeMedicamment(semaines, refFirmes, annees);
+    }
+
+    
     @GetMapping("/reference/{reference}")
     public Consommation findByReference(String reference) {
         return consommationService.findByReference(reference);

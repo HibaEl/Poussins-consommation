@@ -41,7 +41,15 @@ public class ConsommationServiceImpl implements ConsommationService {
         }
 
     }
+ @Override
+    public int calculSommmeFourniture(int semaine, String refFirme, int annee) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
+    @Override
+    public int calculSommmeMedicamment(int semaines, String refFirmes, int annees) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     @Override
     public Consommation findByReference(String reference) {
         return consommationDao.findByReference(reference);
@@ -54,5 +62,7 @@ public class ConsommationServiceImpl implements ConsommationService {
     public void setConsommationDao(ConsommationDao consommationDao) {
         this.consommationDao = consommationDao;
     }
+
+   
 
 }

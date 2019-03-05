@@ -15,4 +15,6 @@ import com.poussin.consommationapi.bean.Consommation;
 public interface ConsommationService {
     public Consommation findByReference(String reference);
     public int creer(Consommation consommation );
+    public int calculSommmeFourniture(int semaine,String refFirme,int annee);  
+    public int calculSommmeMedicamment(int semaines,String refFirmes,int annees);  
 }
