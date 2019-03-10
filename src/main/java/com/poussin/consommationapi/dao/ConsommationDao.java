@@ -20,10 +20,10 @@ public interface ConsommationDao extends JpaRepository<Consommation, Long> {
 
     public Consommation findByReference(String reference);
 
-    @Query("select Sum(c.qte) from Consommation c where c.semaine= :semaine and c.annee= :annee and c.refFirme= :refFirme and c.typeConsommation.libelle= 'Fourniture'")
-    public int calculSommmeFourniture(@Param("semaine") int semaine, @Param("reFirme") String refFirme, @Param("annee") int annee);
+    @Query("select Sum(c.qte) from Consommation c where c.semaine= :semaine and c.annee= :annee and c.referenceFirme= :referenceFirme and c.categorieConsomation.typeConsommation.libelle= 'Fourniture'")
+    public int calculSommmeFourniture(@Param("semaine") int semaine, @Param("referenceFirme") String referenceFirme, @Param("annee") int annee);
 
-    @Query("select Sum(m.qte) from Consommation m where m.semaine= :semaines and m.annee= :annees and m.refFirme= :refFirmes and c.typeConsommation.libelle= 'Medicamment'")
-    public int calculSommmeMedicamment(@Param("semaines") int semaines, @Param("reFirmes") String refFirmes, @Param("annees") int annees);
+    @Query("select Sum(m.qte) from Consommation m where m.semaine= :semaines and m.annee= :annees and m.referenceFirme= :referenceFirmes and c.categorieConsomation.typeConsommation.libelle= 'Medicamment'")
+    public int calculSommmeMedicamment(@Param("semaines") int semaines, @Param("referenceFirmes") String referenceFirmes, @Param("annees") int annees);
 
 }

@@ -46,16 +46,16 @@ public class ConsommationRest {
         return consommationService.creer(consommation);
     }
 
-    @GetMapping("")
-    public int calculSommmeFourniture(@Param("semaine") int semaine, @Param("reFirme") String refFirme, @Param("annee") int annee) {
-      return consommationService.calculSommmeFourniture(semaine, refFirme, annee);
+    @GetMapping("/semaine/{semaine}/referenceFirme/{referenceFirme}/annee/{annee}")
+    public int calculSommmeFourniture(@Param("semaine") int semaine, @Param("referenceFirme") String referenceFirme, @Param("annee") int annee) {
+        return consommationService.calculSommmeFourniture(semaine, referenceFirme, annee);
     }
 
-    public int calculSommmeMedicamment(@Param("semaines") int semaines, @Param("reFirmes") String refFirmes, @Param("annees") int annees){
-    return consommationService.calculSommmeMedicamment(semaines, refFirmes, annees);
+    @GetMapping("/semaines/{semaines}/referenceFirmes/{referenceFirmes}/annees/{annees}")
+    public int calculSommmeMedicamment(@Param("semaines") int semaines, @Param("referenceFirme") String referenceFirme, @Param("annees") int annees) {
+        return consommationService.calculSommmeMedicamment(semaines, referenceFirme, annees);
     }
 
-    
     @GetMapping("/reference/{reference}")
     public Consommation findByReference(String reference) {
         return consommationService.findByReference(reference);
