@@ -5,8 +5,11 @@
  */
 package com.poussin.consommationapi.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import java.io.Serializable;
 import java.util.Date;
+import static javassist.CtMethod.ConstParameter.integer;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,14 +31,14 @@ public class Consommation implements Serializable {
     private String reference;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateConsommation;
-    private int nbreFemale;
-    private int nbreMale;
-    private int qte;
-    private int semaine;
-    private int annee;
-    private int mois;
+    private Integer nbreFemale;
+    private Integer nbreMale;
+    private Integer qte;
+    private Integer semaine;
+    private Integer annee;
+    private Integer mois;
     private String referenceFirme;
-    
+
     @OneToOne
     private CategorieConsommation categorieConsommation;
 
@@ -119,14 +122,15 @@ public class Consommation implements Serializable {
         this.referenceFirme = referenceFirme;
     }
 
+    @JsonIgnore
     public CategorieConsommation getCategorieConsommation() {
         return categorieConsommation;
     }
 
+    @JsonSetter
     public void setCategorieConsommation(CategorieConsommation categorieConsommation) {
         this.categorieConsommation = categorieConsommation;
     }
-    
 
     @Override
     public int hashCode() {
@@ -150,7 +154,9 @@ public class Consommation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.poussin.consommationapi.bean.Consommation[ id=" + id + " ]";
+        return "Consommation{" + "id=" + id + ", reference=" + reference + ", dateConsommation=" + dateConsommation + ", nbreFemale=" + nbreFemale + ", nbreMale=" + nbreMale + ", qte=" + qte + ", semaine=" + semaine + ", annee=" + annee + ", mois=" + mois + ", referenceFirme=" + referenceFirme + ", categorieConsommation=" + categorieConsommation + '}';
     }
+
+    
 
 }
