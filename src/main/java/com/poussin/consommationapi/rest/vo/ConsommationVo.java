@@ -24,16 +24,7 @@ public class ConsommationVo {
     private String annee;
     private String mois;
     private String referenceFirme;
-    private CategorieConsommation categorieConsommation;
-    private String Total;
-
-    public String getTotal() {
-        return Total;
-    }
-
-    public void setTotal(String Total) {
-        this.Total = Total;
-    }
+    private CategorieConsommationVo categorieConsommationVo;
 
     public Long getId() {
         return id;
@@ -115,14 +106,12 @@ public class ConsommationVo {
         this.referenceFirme = referenceFirme;
     }
 
-    public CategorieConsommation getCategorieConsommation() {
-        return categorieConsommation;
+    public CategorieConsommationVo getCategorieConsommationVo() {
+        return categorieConsommationVo;
     }
 
-    public void setCategorieConsommation(CategorieConsommation categorieConsommation) {
-        this.categorieConsommation = categorieConsommation;
+    public void setCategorieConsommationVo(CategorieConsommationVo categorieConsommationVo) {
+        this.categorieConsommationVo = categorieConsommationVo;
     }
-
-   
 
 }

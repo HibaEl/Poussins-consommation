@@ -6,6 +6,7 @@
 package com.poussin.consommationapi.service;
 
 import com.poussin.consommationapi.bean.Consommation;
+import java.util.List;
 
 
 /**
@@ -14,7 +15,8 @@ import com.poussin.consommationapi.bean.Consommation;
  */
 public interface ConsommationService {
     public Consommation findByReference(String reference);
+    public List<Consommation>findAll();
     public int creer(Consommation consommation );
-    public int calculSommmeFourniture(int semaine,String refFirme,int annee);  
-    public int calculSommmeMedicamment(int semaines,String refFirmes,int annees);  
+    public int calculSommmeFourniture(Integer semaine,String referenceFirme,Integer annee);  
+    public int calculSommmeMedicamment(Integer annees,Integer semaines,String referenceFirmes);  
 }

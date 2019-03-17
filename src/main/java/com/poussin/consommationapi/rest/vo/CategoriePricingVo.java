@@ -17,7 +17,7 @@ public class CategoriePricingVo {
     private String prix;
     private String dateMin;
     private String dateMax;
-    private CategorieConsommationVo categorieConsommationVo;
+  //  private CategorieConsommationVo categorieConsommationVo;
 
     public Long getId() {
         return id;
@@ -50,7 +50,7 @@ public class CategoriePricingVo {
     public void setDateMax(String dateMax) {
         this.dateMax = dateMax;
     }
-
+/*
     public CategorieConsommationVo getCategorieConsommationVo() {
         return categorieConsommationVo;
     }
@@ -58,6 +58,6 @@ public class CategoriePricingVo {
     public void setCategorieConsommationVo(CategorieConsommationVo categorieConsommationVo) {
         this.categorieConsommationVo = categorieConsommationVo;
     }
-
+*/
     
 }

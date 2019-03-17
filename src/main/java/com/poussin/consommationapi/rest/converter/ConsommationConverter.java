@@ -7,6 +7,7 @@ package com.poussin.consommationapi.rest.converter;
 
 import com.poussin.consommationapi.bean.CategorieConsommation;
 import com.poussin.consommationapi.bean.Consommation;
+import com.poussin.consommationapi.rest.vo.CategorieConsommationVo;
 import com.poussin.consommationapi.rest.vo.ConsommationVo;
 import com.poussin.consommationapi.service.ConsommationService;
 import com.poussin.consommationapi.util.DateUtil;
@@ -21,9 +22,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConsommationConverter extends AbstractConverter<Consommation, ConsommationVo> {
     
-    @Autowired
-    ConsommationService consommationService;
-    
+   
     @Override
     public Consommation toItem(ConsommationVo vo) {
         if (vo == null) {
@@ -40,7 +39,7 @@ public class ConsommationConverter extends AbstractConverter<Consommation, Conso
             item.setAnnee(NumberUtil.toIn(vo.getAnnee()));
             item.setMois(NumberUtil.toIn(vo.getMois()));
             item.setReferenceFirme(vo.getReferenceFirme());
-           // item.setCategorieConsommation(new CategorieConsommation.toItem(vo.getCategorieConsommationVo()));
+            item.setCategorieConsommation(new CategorieConsommationConverter().toItem(vo.getCategorieConsommationVo()));
             return item;
         }
     }
@@ -61,19 +60,10 @@ public class ConsommationConverter extends AbstractConverter<Consommation, Conso
             vo.setAnnee(NumberUtil.toStringInt(item.getAnnee()));
             vo.setMois(NumberUtil.toStringInt(item.getMois()));
             vo.setReferenceFirme(item.getReferenceFirme());
-            // vo.setTotal(Total);
-            // vo.getCategorieConsommationVo()
-// vo.setCategorieConsommationVo(CategorieConsommationVo);
+            vo.setCategorieConsommationVo(new CategorieConsommationConverter().toVo(item.getCategorieConsommation()));
             return vo;
         }
     }
     
-    public ConsommationService getConsommationService() {
-        return consommationService;
-    }
-    
-    public void setConsommationService(ConsommationService consommationService) {
-        this.consommationService = consommationService;
-    }
-    
+      
 }

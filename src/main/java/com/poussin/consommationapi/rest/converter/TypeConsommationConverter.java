@@ -7,11 +7,13 @@ package com.poussin.consommationapi.rest.converter;
 
 import com.poussin.consommationapi.bean.TypeConsommation;
 import com.poussin.consommationapi.rest.vo.TypeConsommationVo;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author hp
  */
+@Component
 public class TypeConsommationConverter extends AbstractConverter<TypeConsommation, TypeConsommationVo> {
 
     @Override

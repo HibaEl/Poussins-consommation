@@ -7,13 +7,15 @@ package com.poussin.consommationapi.rest;
 
 import com.poussin.consommationapi.bean.Consommation;
 import com.poussin.consommationapi.rest.converter.AbstractConverter;
+import com.poussin.consommationapi.rest.converter.ConsommationConverter;
 import com.poussin.consommationapi.rest.vo.ConsommationVo;
 import com.poussin.consommationapi.service.ConsommationService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,30 +37,36 @@ public class ConsommationRest {
     @Qualifier("consommationConverter")
     private AbstractConverter<Consommation, ConsommationVo> consommationConverter;
 
-    /* @PostMapping("/")
+    @PostMapping("/")
     public int creer(@RequestBody ConsommationVo consommationVo) {
         Consommation consommation = new ConsommationConverter().toItem(consommationVo);
         return consommationService.creer(consommation);
     }
-     */
+
+    /*
+    
     @PostMapping("/")
     public int creer(@RequestBody Consommation consommation) {
         return consommationService.creer(consommation);
-    }
-
+    }*/
     @GetMapping("/semaine/{semaine}/referenceFirme/{referenceFirme}/annee/{annee}")
-    public int calculSommmeFourniture(@Param("semaine") int semaine, @Param("referenceFirme") String referenceFirme, @Param("annee") int annee) {
+    public int calculSommmeFourniture(@PathVariable Integer semaine, @PathVariable String referenceFirme, @PathVariable Integer annee) {
         return consommationService.calculSommmeFourniture(semaine, referenceFirme, annee);
     }
 
-    @GetMapping("/semaines/{semaines}/referenceFirmes/{referenceFirmes}/annees/{annees}")
-    public int calculSommmeMedicamment(@Param("semaines") int semaines, @Param("referenceFirme") String referenceFirme, @Param("annees") int annees) {
-        return consommationService.calculSommmeMedicamment(semaines, referenceFirme, annees);
+    @GetMapping("/annees/{annees}/semaines/{semaines}/referenceFirmes/{referenceFirmes}")
+    public int calculSommmeMedicamment(@PathVariable Integer annees, @PathVariable Integer semaines, @PathVariable String referenceFirmes) {
+        return consommationService.calculSommmeMedicamment(annees, semaines, referenceFirmes);
     }
 
     @GetMapping("/reference/{reference}")
-    public Consommation findByReference(String reference) {
-        return consommationService.findByReference(reference);
+    public ConsommationVo findByReference(@PathVariable String reference) {
+        return consommationConverter.toVo(consommationService.findByReference(reference));
+    }
+
+    @GetMapping("/")
+    public List<ConsommationVo> findAll() {
+        return consommationConverter.toVo(consommationService.findAll());
     }
 
     public AbstractConverter<Consommation, ConsommationVo> getConsommationConverter() {

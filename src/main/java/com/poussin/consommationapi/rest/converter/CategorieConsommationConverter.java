@@ -6,12 +6,15 @@
 package com.poussin.consommationapi.rest.converter;
 
 import com.poussin.consommationapi.bean.CategorieConsommation;
+import com.poussin.consommationapi.bean.CategoriePricing;
 import com.poussin.consommationapi.rest.vo.CategorieConsommationVo;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author hp
  */
+@Component
 public class CategorieConsommationConverter extends AbstractConverter<CategorieConsommation, CategorieConsommationVo> {
 
     @Override
@@ -23,9 +26,10 @@ public class CategorieConsommationConverter extends AbstractConverter<CategorieC
             item.setReference(vo.getReference());
             item.setId(vo.getId());
             item.setLibelle(vo.getLibelle());
-         //   item.setCategoriePricings(new CategorieConsommationConverter().toItem(vo.getCategoriePricingVo()));
+            item.setCategoriePricing(new CategoriePricingConverter().toItem(vo.getCategoriePricingVo()));
             item.setTypeConsommation(new TypeConsommationConverter().toItem(vo.getTypeConsommationVo()));
             return item;
+            
         }
     }
 
@@ -38,7 +42,7 @@ public class CategorieConsommationConverter extends AbstractConverter<CategorieC
             vo.setReference(item.getReference());
             vo.setId(item.getId());
             vo.setLibelle(item.getLibelle());
-           // vo.setCategoriePricingVo(new CategorieConsommationConverter().toVo(item.getCategoriePricings()));
+            vo.setCategoriePricingVo(new CategoriePricingConverter().toVo(item.getCategoriePricing()));
             vo.setTypeConsommationVo(new TypeConsommationConverter().toVo(item.getTypeConsommation()));
             return vo;
         }

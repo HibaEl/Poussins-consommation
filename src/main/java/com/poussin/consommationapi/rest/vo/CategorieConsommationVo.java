@@ -5,9 +5,6 @@
  */
 package com.poussin.consommationapi.rest.vo;
 
-import com.poussin.consommationapi.bean.CategoriePricing;
-import java.util.List;
-
 /**
  *
  * @author hp
@@ -18,7 +15,7 @@ public class CategorieConsommationVo {
     private String libelle;
     private String reference;
     private TypeConsommationVo typeConsommationVo;
-    private CategoriePricing categoriePricing;
+    private CategoriePricingVo categoriePricingVo;
 
     public Long getId() {
         return id;
@@ -52,13 +49,14 @@ public class CategorieConsommationVo {
         this.typeConsommationVo = typeConsommationVo;
     }
 
-    public CategoriePricing getCategoriePricing() {
-        return categoriePricing;
+    
+    public CategoriePricingVo getCategoriePricingVo() {
+        return categoriePricingVo;
     }
 
-    public void setCategoriePricing(CategoriePricing categoriePricing) {
-        this.categoriePricing = categoriePricing;
+  
+    public void setCategoriePricingVo(CategoriePricingVo categoriePricingVo) {
+        this.categoriePricingVo = categoriePricingVo;
     }
-
 
 }

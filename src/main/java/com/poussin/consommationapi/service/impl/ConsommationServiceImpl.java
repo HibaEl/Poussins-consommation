@@ -9,6 +9,7 @@ import com.poussin.consommationapi.bean.Consommation;
 import com.poussin.consommationapi.dao.ConsommationDao;
 import com.poussin.consommationapi.service.ConsommationService;
 import java.util.Calendar;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,13 +46,18 @@ public class ConsommationServiceImpl implements ConsommationService {
     }
 
     @Override
-    public int calculSommmeFourniture(int semaine, String referenceFirme, int annee) {
+    public int calculSommmeFourniture(Integer semaine, String referenceFirme, Integer annee) {
         return consommationDao.calculSommmeFourniture(semaine, referenceFirme, annee);
     }
 
     @Override
-    public int calculSommmeMedicamment(int semaines, String referenceFirmes, int annees) {
-        return consommationService.calculSommmeMedicamment(semaines, referenceFirmes, annees);
+    public int calculSommmeMedicamment(Integer annees, Integer semaines, String referenceFirmes) {
+        return consommationDao.calculSommmeMedicamment(annees, semaines, referenceFirmes);
+    }
+
+    @Override
+    public List<Consommation> findAll() {
+        return consommationDao.findAll();
     }
 
     @Override
@@ -74,6 +80,5 @@ public class ConsommationServiceImpl implements ConsommationService {
     public void setConsommationService(ConsommationService consommationService) {
         this.consommationService = consommationService;
     }
-    
 
 }

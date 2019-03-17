@@ -9,11 +9,13 @@ import com.poussin.consommationapi.bean.CategoriePricing;
 import com.poussin.consommationapi.rest.vo.CategoriePricingVo;
 import com.poussin.consommationapi.util.DateUtil;
 import com.poussin.consommationapi.util.NumberUtil;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author hp
  */
+@Component
 public class CategoriePricingConverter extends AbstractConverter<CategoriePricing, CategoriePricingVo> {
 
     @Override
@@ -26,7 +28,7 @@ public class CategoriePricingConverter extends AbstractConverter<CategoriePricin
             item.setPrix(NumberUtil.toIn(vo.getPrix()));
             item.setDateMin(DateUtil.parseCommandeStyle(vo.getDateMin()));
             item.setDateMax(DateUtil.parseCommandeStyle(vo.getDateMax()));
-            item.setCategorieConsommations(new CategorieConsommationConverter().toItem(vo.getCategorieConsommationVo()));
+       //     item.setCategorieConsommation(new CategorieConsommationConverter().toItem(vo.getCategorieConsommationVo()));
             return item;
         }
     }
@@ -41,7 +43,7 @@ public class CategoriePricingConverter extends AbstractConverter<CategoriePricin
             vo.setPrix(NumberUtil.toDouble(item.getPrix()));
             vo.setDateMin(DateUtil.formatYYYYMMDDmmhhSS(item.getDateMin()));
             vo.setDateMax(DateUtil.formatYYYYMMDDmmhhSS(item.getDateMax()));
-            vo.setCategorieConsommationVo(new CategorieConsommationConverter().toVo(item.getCategorieConsommation()));
+         //   vo.setCategorieConsommationVo(new CategorieConsommationConverter().toVo(item.getCategorieConsommation()));
             return vo;
 
         }
