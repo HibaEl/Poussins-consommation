@@ -60,6 +60,7 @@ public class ConsommationServiceImpl implements ConsommationService {
         return consommationDao.findAll();
     }
 
+    
     @Override
     public Consommation findByReference(String reference) {
         return consommationDao.findByReference(reference);
