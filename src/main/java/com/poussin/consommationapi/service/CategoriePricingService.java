@@ -6,6 +6,7 @@
 package com.poussin.consommationapi.service;
 
 import com.poussin.consommationapi.bean.CategorieConsommation;
+import com.poussin.consommationapi.bean.CategoriePricing;
 import java.util.Date;
 
 /**
@@ -13,5 +14,8 @@ import java.util.Date;
  * @author hp
  */
 public interface CategoriePricingService {
-   public void calculPrix(Date date,CategorieConsommation categorieConsommation ); 
+  public Double findPrix(Date d, Date r);
+  public CategoriePricing findByReference(String reference);
+  public int creer(CategoriePricing categoriePricing);
+  public void deleteByReference(String reference);
 }

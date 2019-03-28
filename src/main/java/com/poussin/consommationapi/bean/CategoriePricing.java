@@ -26,6 +26,7 @@ public class CategoriePricing implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String reference;
     private double prix;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateMin;
@@ -53,6 +54,14 @@ public class CategoriePricing implements Serializable {
 
     public Date getDateMin() {
         return dateMin;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public void setDateMin(Date dateMin) {

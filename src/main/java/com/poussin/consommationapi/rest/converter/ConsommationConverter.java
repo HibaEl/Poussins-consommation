@@ -25,13 +25,14 @@ public class ConsommationConverter extends AbstractConverter<Consommation, Conso
    
     @Override
     public Consommation toItem(ConsommationVo vo) {
+        System.out.println("haaa vo == "+vo);
         if (vo == null) {
             return null;
         } else {
             Consommation item = new Consommation();
             item.setReference(vo.getReference());
             item.setId(vo.getId());
-            item.setDateConsommation(DateUtil.parseCommandeStyle(vo.getDateConsommation()));
+            item.setDateConsommation(DateUtil.parse(vo.getDateConsommation()));
             item.setNbreMale(NumberUtil.toIn(vo.getNbreMale()));
             item.setNbreFemale(NumberUtil.toIn(vo.getNbreFemale()));
             item.setQte(NumberUtil.toIn(vo.getQte()));
@@ -40,6 +41,7 @@ public class ConsommationConverter extends AbstractConverter<Consommation, Conso
             item.setMois(NumberUtil.toIn(vo.getMois()));
             item.setReferenceFirme(vo.getReferenceFirme());
             item.setCategorieConsommation(new CategorieConsommationConverter().toItem(vo.getCategorieConsommationVo()));
+            System.out.println("item="+item);
             return item;
         }
     }
@@ -52,7 +54,7 @@ public class ConsommationConverter extends AbstractConverter<Consommation, Conso
             ConsommationVo vo = new ConsommationVo();
             vo.setReference(item.getReference());
             vo.setId(item.getId());
-            vo.setDateConsommation(DateUtil.formatYYYYMMDDmmhhSS(item.getDateConsommation()));
+            vo.setDateConsommation(DateUtil.formateDate("yyyy-MM-dd",item.getDateConsommation()));
             vo.setNbreMale(NumberUtil.toStringInt(item.getNbreMale()));
             vo.setNbreFemale(NumberUtil.toStringInt(item.getNbreFemale()));
             vo.setQte(NumberUtil.toStringInt(item.getQte()));

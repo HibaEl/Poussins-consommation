@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.poussin.consommationapi.service;
+package com.poussin.consommationapi.dao;
 
 import com.poussin.consommationapi.bean.CategorieConsommation;
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author hp
  */
-public interface CategorieConsommationService  {
-   public List<CategorieConsommation>findAllCat();
+@Repository
+public interface CategorieConsommationDao extends JpaRepository<CategorieConsommation, Long> {
+    
 }

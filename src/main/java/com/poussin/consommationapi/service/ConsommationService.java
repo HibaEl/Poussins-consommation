@@ -8,15 +8,23 @@ package com.poussin.consommationapi.service;
 import com.poussin.consommationapi.bean.Consommation;
 import java.util.List;
 
-
 /**
  *
  * @author hp
  */
 public interface ConsommationService {
+
     public Consommation findByReference(String reference);
-    public List<Consommation>findAll();
-    public int creer(Consommation consommation );
-    public int calculSommmeFourniture(Integer semaine,String referenceFirme,Integer annee);  
-    public int calculSommmeMedicamment(Integer annees,Integer semaines,String referenceFirmes);  
+
+    public List<Consommation> findAll();
+
+    public int creer(Consommation consommation);
+
+    public int calculSommmeFourniture(Integer semaine, String referenceFirme, Integer annee);
+
+    public int calculSommmeMedicamment(Integer annees, Integer semaines, String referenceFirmes);
+
+    public void deleteByReference(String reference);
+
+    public List<Consommation> findByReferenceFirmeAndAnneeAndSemaine(String referenceFirme, Integer annee, Integer semaine);
 }

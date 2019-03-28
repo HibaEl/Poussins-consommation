@@ -26,8 +26,8 @@ public class CategoriePricingConverter extends AbstractConverter<CategoriePricin
             CategoriePricing item = new CategoriePricing();
             item.setId(vo.getId());
             item.setPrix(NumberUtil.toIn(vo.getPrix()));
-            item.setDateMin(DateUtil.parseCommandeStyle(vo.getDateMin()));
-            item.setDateMax(DateUtil.parseCommandeStyle(vo.getDateMax()));
+            item.setDateMin(DateUtil.parse(vo.getDateMin()));
+            item.setDateMax(DateUtil.parse(vo.getDateMax()));
        //     item.setCategorieConsommation(new CategorieConsommationConverter().toItem(vo.getCategorieConsommationVo()));
             return item;
         }
@@ -41,8 +41,8 @@ public class CategoriePricingConverter extends AbstractConverter<CategoriePricin
             CategoriePricingVo vo = new CategoriePricingVo();
             vo.setId(item.getId());
             vo.setPrix(NumberUtil.toDouble(item.getPrix()));
-            vo.setDateMin(DateUtil.formatYYYYMMDDmmhhSS(item.getDateMin()));
-            vo.setDateMax(DateUtil.formatYYYYMMDDmmhhSS(item.getDateMax()));
+            vo.setDateMin(DateUtil.formateDate("yyyy-MM-dd",item.getDateMin()));
+            vo.setDateMax(DateUtil.formateDate("yyyy-MM-dd",item.getDateMax()));
          //   vo.setCategorieConsommationVo(new CategorieConsommationConverter().toVo(item.getCategorieConsommation()));
             return vo;
 

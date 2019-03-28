@@ -6,7 +6,6 @@
 package com.poussin.consommationapi.util;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.Date;
 
 /**
@@ -18,7 +17,7 @@ public class NumberUtil {
     private static final String CHAINE_VIDE = "";
     
 
-    public static int toIn(String value) {
+    public static Integer toIn(String value) {
         if (value == null || value.isEmpty()) {
             return 0;
         } else {
